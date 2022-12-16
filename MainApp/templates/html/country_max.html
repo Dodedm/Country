@@ -1,0 +1,18 @@
+{% extends 'html/index.html' %}
+{% block title %}
+    {{last}}
+{% endblock %}
+
+
+{% block basic %}
+<div style="margin-left: 100px;">
+    <h1><strong>{{last}}</strong></h1>
+    {% for item in masiv %}
+    <h3>{{item}}</h3>
+    {% endfor %}
+
+    <a href="{% url 'country' %}">К списку стран</a>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends 'html/index.html' %}
+{% block title %}
+    Country
+{% endblock %}
+
+
+{% block primer %}
+{% for item in primer %}
+    <a href="{% url 'country'%}/{{item}}">{{item}}</a>
+{% endfor %}
+{% endblock %}
+
+{% block basic %}
+<div style="margin-left: 50px;">
+    {% for item in masiv %}
+        <h1><a href="{% url 'country' %}/{{item}}" >{{item}}</a></h1>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+{% block paginator %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if masiv.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ masiv.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ masiv.number }} из {{ masiv.paginator.num_pages }}
+        </span>
+
+        {% if masiv.has_next %}
+            <a href="?page={{ masiv.next_page_number }}">Следующая</a>
+            <a href="?page={{ masiv.paginator.num_pages }}">Предыдущая &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
